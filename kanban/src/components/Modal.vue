@@ -12,25 +12,25 @@
           <form class="">
             <div class="form-group">
               <label><h6>Title</h6></label>
-              <input type="text" class="form-control form-control-sm" placeholder="title">
+              <input v-model="formTask.title" type="text" class="form-control form-control-sm" placeholder="title">
             </div>
             <div class="form-group">
               <label><h6>Description</h6></label>
-              <input type="text" class="form-control form-control-sm" placeholder="Description">
+              <input v-model="formTask.desc" type="text" class="form-control form-control-sm" placeholder="Description">
             </div>
             <div class="form-group">
               <label><h6>Point</h6></label>
-              <input type="number" class="form-control form-control-sm" placeholder="0">
+              <input v-model="formTask.point" type="number" class="form-control form-control-sm" placeholder="0">
             </div>
             <div class="form-group">
               <label><h6>Assign To</h6></label>
-              <input type="text" class="form-control form-control-sm" placeholder="Assign To">
+              <input v-model="formTask.assignTo" type="text" class="form-control form-control-sm" placeholder="Assign To">
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
+          <button  type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button @click="submitTask()" type="button" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
@@ -39,6 +39,27 @@
 
 <script>
 export default {
+  data () {
+    return {
+      formTask: {
+        title: '',
+        desc: '',
+        point: 0,
+        assignTo: '',
+        status: 0
+      }
+    }
+  },
+  methods: {
+    submitTask () {
+      this.$emit('submitTask', this.formTask)
+      this.formTask.title = ''
+      this.formTask.desc = ''
+      this.formTask.point = 0
+      this.formTask.assignTo = ''
+      console.log('masuk sini 1')
+    }
+  }
 }
 </script>
 

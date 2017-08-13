@@ -6,28 +6,16 @@
       </div>
       <div class="card-body">
         <!-- LIST JOB -->
-        <div class="card mb-3">
+        <div v-for="todo in todoTask" class="card mb-3">
           <div class="card-header text-light bg-dark">
-            Job 1
+            {{todo.title}}
           </div>
           <div class="card-body">
-            Lorem ipsum dolor sit amet.
+            <p>Point: {{todo.point}}</p>
+            Assign To: {{todo.assignTo}}
           </div>
           <div class="card-footer bg-white">
-            <button class="btn btn-sm btn-info" type="button" name="button">Details</button>
-          </div>
-        </div>
-        <!-- LIST JOB END -->
-        <!-- LIST JOB -->
-        <div class="card mb-3">
-          <div class="card-header text-light bg-dark">
-            Job 1
-          </div>
-          <div class="card-body">
-            Lorem ipsum dolor sit amet.
-          </div>
-          <div class="card-footer bg-white">
-            <button class="btn btn-sm btn-info" type="button" name="button">Details</button>
+            <button data-toggle="modal" data-target="#modalDetails" @click="taskDetails(todo)" class="btn btn-sm btn-info" type="button" name="button">Details</button>
           </div>
         </div>
         <!-- LIST JOB END -->
@@ -38,6 +26,13 @@
 
 <script>
 export default {
+  props: ['todoTask'],
+  methods: {
+    taskDetails: function (data) {
+      console.log('masuk sini')
+      this.$emit('taskDetails', data)
+    }
+  }
 }
 </script>
 

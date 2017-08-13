@@ -6,15 +6,16 @@
       </div>
       <div class="card-body">
         <!-- LIST JOB -->
-        <div class="card mb-3">
+        <div v-for="doing in doingTask" class="card mb-3">
           <div class="card-header text-light bg-dark">
-            Job 1
+            {{doing.title}}
           </div>
           <div class="card-body">
-            Lorem ipsum dolor sit amet.
+            <p>Point: {{doing.point}}</p>
+            Assign To: {{doing.assignTo}}
           </div>
           <div class="card-footer bg-white">
-            <button class="btn btn-sm btn-info" type="button" name="button">Details</button>
+            <button @click="taskDetails(doing)" data-toggle="modal" data-target="#modalDetails" class="btn btn-sm btn-info" type="button" name="button">Details</button>
           </div>
         </div>
         <!-- LIST JOB END -->
@@ -25,6 +26,13 @@
 
 <script>
 export default {
+  props: ['doingTask'],
+  methods: {
+    taskDetails: function (data) {
+      console.log('masuk sini')
+      this.$emit('taskDetails', data)
+    }
+  }
 }
 </script>
 

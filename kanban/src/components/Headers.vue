@@ -6,7 +6,7 @@
         <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#addModal">Add Task</button>
       </form>
     </nav>
-    <modal></modal>
+    <modal @submitTask="submitTask"></modal>
   </div>
 </template>
 
@@ -15,6 +15,11 @@ import Modal from '@/components/Modal'
 export default {
   components: {
     Modal
+  },
+  methods: {
+    submitTask (data) {
+      this.$emit('submitTask', data)
+    }
   }
 }
 </script>

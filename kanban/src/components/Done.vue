@@ -6,27 +6,18 @@
       </div>
       <div class="card-body">
         <!-- LIST JOB -->
-        <div class="card mb-3">
+        <div v-for="done in doneTask" class="card mb-3">
           <div class="card-header text-light bg-dark">
-            Job 1
+            {{done.title}}
           </div>
           <div class="card-body">
-            Lorem ipsum dolor sit amet.
+            <p>
+              Point: {{done.point}}
+            </p>
+            Assign To: {{done.assignTo}}
           </div>
           <div class="card-footer bg-white">
-            <button class="btn btn-sm btn-info" type="button" name="button">Details</button>
-          </div>
-        </div>
-        <!-- LIST JOB END --><!-- LIST JOB -->
-        <div class="card mb-3">
-          <div class="card-header text-light bg-dark">
-            Job 1
-          </div>
-          <div class="card-body">
-            Lorem ipsum dolor sit amet.
-          </div>
-          <div class="card-footer bg-white">
-            <button class="btn btn-sm btn-info" type="button" name="button">Details</button>
+            <button @click="taskDetails(done)" data-toggle="modal" data-target="#modalDetails" class="btn btn-sm btn-info" type="button" name="button">Details</button>
           </div>
         </div>
         <!-- LIST JOB END -->
@@ -37,6 +28,13 @@
 
 <script>
 export default {
+  props: ['doneTask'],
+  methods: {
+    taskDetails: function (data) {
+      console.log('masuk sini')
+      this.$emit('taskDetails', data)
+    }
+  }
 }
 </script>
 
