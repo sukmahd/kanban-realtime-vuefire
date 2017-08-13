@@ -40,7 +40,9 @@ export default {
       this.$emit('setDone', data)
     },
     deleteTask: function (data) {
-      this.$emit('deleteTask', data)
+      if (window.confirm('Are you sure want to delete this task?')) {
+        this.$emit('deleteTask', data)
+      }
     }
   }
 }
