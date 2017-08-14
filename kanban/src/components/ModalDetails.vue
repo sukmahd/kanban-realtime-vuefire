@@ -9,14 +9,16 @@
           </button>
         </div>
         <div class="modal-body">
-          {{currentTask.desc}}
+          <p>Assign To: {{currentTask.assignTo}}</p>
+          Description: {{currentTask.desc}}
+          <p>Point: {{currentTask.point}}</p>
         </div>
         <div class="modal-footer">
-          <button @click="setBackLog(currentTask)" v-if="currentTask.status == 1"  type="button" class="btn btn-danger">Back Log</button>
-          <button @click="setTodo(currentTask)" v-if="currentTask.status == 0 || currentTask.status == 2"  type="button" class="btn btn-warning text-white">To Do</button>
-          <button @click="setDoing(currentTask)" v-if="currentTask.status == 1 || currentTask.status == 3"  type="button" class="btn btn-primary">Doing</button>
-          <button @click="setDone(currentTask)" v-if="currentTask.status == 2" type="button" class="btn btn-success">Done</button>
-          <button @click="deleteTask(currentTask)" class="btn btn-danger" type="button" name="button">Delete</button>
+          <button data-dismiss="modal" @click="setBackLog(currentTask)" v-if="currentTask.status == 1"  type="button" class="btn btn-danger">Back Log</button>
+          <button data-dismiss="modal" @click="setTodo(currentTask)" v-if="currentTask.status == 0 || currentTask.status == 2"  type="button" class="btn btn-warning text-white">To Do</button>
+          <button data-dismiss="modal" @click="setDoing(currentTask)" v-if="currentTask.status == 1 || currentTask.status == 3"  type="button" class="btn btn-primary">Doing</button>
+          <button data-dismiss="modal" @click="setDone(currentTask)" v-if="currentTask.status == 2" type="button" class="btn btn-success">Done</button>
+          <button data-dismiss="modal" @click="deleteTask(currentTask)" class="btn btn-danger" type="button" name="button">Delete</button>
         </div>
       </div>
     </div>
