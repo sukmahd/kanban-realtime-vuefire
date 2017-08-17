@@ -2,6 +2,7 @@
 
 Build Setup
 
+``` bash
 # install dependencies
 npm install
 
@@ -15,4 +16,5 @@ npm run build
 npm run build --report
 
 #live application
+```
 https://i-fox-kanban.firebaseapp.com/#/
